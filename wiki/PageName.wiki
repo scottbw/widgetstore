@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary The set of requirements and desired functionalities
 
 = Widget store requirements =
 
@@ -132,4 +132,3 @@ quality of service: workspace not suitable for roaming use)
 =  =
 
 =  =
-
