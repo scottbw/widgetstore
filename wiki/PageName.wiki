@@ -1,0 +1,135 @@
+#summary One-sentence summary of this page.
+
+= Widget store requirements =
+
+As discussed in meeting@KMi
+
+
+=  =
+*M1* Launching (add to google, add to my container)
+
+*M1?* For data analysis: we want to know, what people are
+actually doing with the widget: Affordances, functionalities >
+recommendations / analytics / social ratings
+- research question: how do you meaningfully track usage?
+- competencies/goals: linking of widgets/bundles,
+affordances, and competencies
+
+*M1*: tracking of use (use of widgets, as in CAMS):
+- Injection of tracking javascript code problematic, could be
+a separate project (widget analytics)
+- Tracking of store usage data
+- tracking of communication data
+- which/where widgets appear with which other widgets
+(possible: see Lucas’ implementation)
+
+? Tracking of original shared data keys (maybe necessary for
+migration)
+
+*M1*: social ratings
+
+*M1*: social requirements engineering: build in ‘propose
+feature extension’ stuff; ratings of extension requests, …
+
+*M2*: reporting problems (e.g. denunciation, bug reports, …)
+
+*M1*: separation of concerns: discover, bind, use
+- decouple registry API from actual store
+- ajaxify front-end/back-end communcation
+
+*M1*?: functional skinning:
+http://vohtaski.blogspot.com/2011/02/what-is-functional-
+skin.html
+http://vohtaski.blogspot.com/2011/02/what-is-space-and-
+what-is-it-used-for.html
+http://www.role-widgetstore.eu/content/pad-3d-demo
+
+*M1*: internationalisation (localisation of interface, localised
+search: multilingual index, filtered results)
+
+*M2*: age rating (… not suitable under 5 years…)
+
+
+*M3*?: payment models (e.g. subscription models)
+Multiple: terms of use (IPR, privacy, …)
+
+*M2*: Simple ones: terms of use (IPR, privacy, …)
+
+*M1*: dependancy modeling (e.g. search field / result lists)
+
+*M1*: Resolution: I have a conceptual description of a work
+space: resolve my type=’chat’ widget into an actual chat
+widget
+
+*M1*: bundles (Role) / arrangements (LTfLL) / compositions
+(iTec) / Mash-Up description language (MDL, Omlette)
+- information about connections between widgets,
+timing of IWC, modes of IWC
+
+*M1*: slicing possible: slice off registry, …: interfacing
+with legacy systems as easy as possible (e.g. for user
+management)
+- user management
+- tracking (interfacing with google analytics, CAMS)?
+- harvesting (widgets)
+
+*M1*: life cycle management (submitted, pending, approved,
+banned, ready for beta, …)
+
+*M1*: management of deployment (at scale: for thousands of
+schools or via e.g. EUN)
+
+*M1*: Possible to plugin the widget store into other
+applications such as an iTunes like application with widget
+store being part of it (IM-C): kind of skinned connector,
+ready for inclusion into e.g. moodle
+
+*M1*: bag of widgets (‘shopping cart’ with a history,
+iTunes ‘stuff you purchased’): add your widgets to a bag to
+inspect them later before instantiating them; or for creating
+bundles from them; watchlist and ‘purchase history’
+
+*M1*: core concept sets of widgets used together
+- Allow materialising the whole workspace (import,
+export)?
+- Allow for sharing a link, when clicking it it will ask the
+user on whether to add the included 5 widgets to your
+igoogle dashboard
+- Or some sort of ‘voucher code’
+
+? interfaces to mash-up editors? (see snapshots below)
+
+? Interface with telco services?
+
+? Quality of service deliberations (IWC: twitter > sms,
+prevent phone bills from piling up)
+
+*M1* (make a plan about): Recombinability: Dependancies
+(fixed, recommended): my widget A I just uploaded goes
+very good with widget B; or indirectly via communication
+(this widget listens to the politics channel, even indirectly
+via the message hub); or via manifest file (related to Omlette
+W3C proposal ‘intercom’)
+
+part of wookie/role sdk: IWC (in Omlette): Orchestration/
+choreography (e.g. LTfLL case)/hybrids(tuning: e.g. from
+choreography to orchestration)
+
+? policy negotiation between containers and back-end
+
+*M1* (conceptually integrated): different levels (of MDL):
+conceptual (e.g. needs a ‘chat’ widget) / logical (e.g. which
+specific widget with what communication) / physical (e.g.
+quality of service: workspace not suitable for roaming use)
+
+*M1*: API should include things like “users who wanted
+-this-, also found -that- useful”
+
+=  =
+
+=  =
+
+=  =
+
+=  =
+
