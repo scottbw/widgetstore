@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+        <script type="text/javascript" src="/wookie/dwr/util.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/engine.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/interface/WidgetImpl.js">
+        </script><script type="text/javascript" src="/wookie/shared/js/wookie-wrapper.js"></script>
+        <script type="text/javascript" src="jquery-1.4.3.min.js"></script>
+        <link rel="stylesheet" href="styles.css" type="text/css" />
+    </head>
+
+    <body>
+        <script>
+            $(document).ready(function(){
+                var outerFrame;
+                $('#sendAnchor').click(function(){
+                    if (outerFrame!=undefined){
+                        outerFrame.postMessage('yes please','*');
+                    }else alert('Please wait few seconds and then retry');
+                });
+
+                function receiver(e) {
+                    outerFrame=e.source;
+                    //console.log('got from, elgg:'+e.data+' . Elgg appears to be on domain:'+e.origin);
+                    //console.log(e.data.substring(0,10));
+                    if (e.data.substring(0,10)=='SCREENNAME') {
+
+                        splitted = e.data.split("/");
+                        username=splitted[splitted.length-1];//get last
+                        alert('Your username is : '+username);
+                    }
+
+                }
+
+                window.addEventListener('message', receiver, false);
+            });
+        </script>
+
+        <p><a id="sendAnchor" href="#">Get Username</a></p>
+
+    </body></html>

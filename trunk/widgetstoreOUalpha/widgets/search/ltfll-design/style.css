@@ -1,0 +1,99 @@
+﻿/**
+BASE-COLORS: 
+
+background: white (#fff);
+dark-blue: #1d4f8a;
+light-blue: #6cb1d8;
+green: #9add5b;
+text: black (#000);
+*/
+
+body
+{
+    border:1px #1d4f8a solid;
+}
+#ltfll_header
+{
+    width:100%;
+    height:45px;
+    background-image: url('header-bar.png');
+    position:relative;
+    /*background-repeat: repeat-x;*/
+   }
+
+#ltfll_footer
+{
+    padding:5px;
+    height:9px;
+    color:#6cb1d8;
+    background-color:#fff;
+}
+
+#ltfll_content
+{
+    padding:5px;
+    font-size:10px;
+    background-color:#fff;
+}
+
+
+.ltfll_title
+{
+    width:100%;
+    display:block;
+    float:left;
+}
+.ltfll_title .ltfll_content
+{
+    font-size:15px;
+    padding:5px;
+    height:38px;
+    display:block;
+    font-weight:bold;
+    color: #1d4f8a;
+}
+.ltfll_logo
+{
+    width:62px;
+    height:45px;
+    background-image:url('header-logo.png');
+    float:right;
+    cursor:pointer;
+}
+.ltfll_help
+{
+	position:absolute;
+	top:31px;
+	left:5px;
+	color: white;
+}
+
+.ltfll_help a:link
+{
+	color: white;
+	text-decoration:underline;
+}
+
+a:link
+{
+	color:#1d4f8a;
+	text-decoration:underline;
+}
+
+a:visited
+{
+	color:#1d4f8a;
+	text-decoration:none;
+}
+
+a:active
+{
+	color:#1d4f8a;
+	text-decoration:none;
+}
+
+a:hover
+{
+	color:#1d4f8a;
+	text-decoration:none;
+}

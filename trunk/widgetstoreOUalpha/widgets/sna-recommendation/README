@@ -1,0 +1,180 @@
+WIDGET README
+
+2010-11-15 Bernhard Hoisl
+
+
+This file is a brief explanation to configure your widgets and make them work
+with IWC (Inter-Widget Communication).
+
+
+Explanation of directory structure:
+ * /help/
+   Help pages (if there are any) should go here.
+
+ * /images/
+   Put images here.
+
+ * /legal/
+   Put any legal texts as well as copyright statements here.
+
+ * /lib/
+   Any general JavaScript libraries are inserted here.
+
+ * /ltfll-design/
+   LTfLL design specific CSS, JS and images reside here.
+
+ * /scripts/
+   Any widget specific JS functions are put here.
+
+ * /style/
+   Widget specific CSS are located here.
+
+
+You may want to configure some widget-specific files:
+ * /config.xml
+   The main file describing your widget (name, author(s), widget ID etc.).
+   Please remove the polling feature line if you do not intend to use IWC at all
+   because it will just generate useless traffic.
+
+ * /index.html
+   The HTML start page. Configure it to your needs (e.g. HTML widget title and
+   of course the actual content you want to display with your widget).
+
+ * /strings.js
+   Put in here the widget title to be displayed as a headline in your widget
+   (LTfLL specific design) and the name of your help link (if you want to
+   provide one).
+
+ * /scripts/index.js
+   You can show or hide the LTfLL logo in the upper right corner, the help link,
+   and the footer (and therefore status messages) by setting the following three
+   variables to either true or false: 'showLogo', 'showHelp', 'showFooter'.
+
+ * /help/index.html
+   If you have enabled to display a help link, create your help page(s) here.
+
+
+Basically, for setting up IWC there are two data format options: JSON or
+key/value pairs. It is recommended to use JSON, but for some circumstances
+key/val pairs might be better suited. Please bear in mind, that all IWC specific
+JSON methods end with 'JSON' (e.g. IWCsetVarJSON(...)). Do not mix up JSON and
+non-JSON methods because this will result in data loss and erroneous behaviour.
+
+For setting up IWC you need to do the following:
+ * /config.xml
+   If your widget wants to receive updates on shared data, be sure to include
+   the polling feature line. If your widget just wants to set shared data, but
+   does not want to get notified about updates happening to data, then please
+   remove the line, otherwise it will just generate useless traffic.
+
+ * /scribts/index.js
+   By calling 'IWCinit()' you have to specify if 'JSON' or 'non-JSON' should be
+   used as data format and if already existent shared data should be initialized
+   at widget onload. Recommendation: IWCinit('JSON', true).
+
+ * /scripts/config.js
+   Decide if you want to display IWC related status messages in the footer of
+   your widget by setting 'IWCstatusMessages' to either true or false.
+   Furthermore, dependent on your IWC data format choice you have to specifiy
+   the following:
+     - JSON:
+       Set variable 'IWCnameSpace' to the namespace your widget belongs to (I
+       recommend using WPs, e.g. 'WP6').
+     - non-JSON:
+       List all IWC variables your widget should listen to updates to in
+       variable 'IWCsharedData'.
+
+ * /scripts/iwc-callbacks.js
+   Here you have to name the callback functions which are invoked when fetching
+   IWC updates. Name them exactly as the IWC variables you want to listen to,
+   but with 'IWC' in the beginning (e.g. IWC variable: 'keyword' ->
+   'IWCkeyword()').
+
+
+Above it is described how IWC variable updates get retrieved and a widget gets
+notified. Moreover, there are two further functionalities: setting and deleting
+shared data. Again we have to distinguish between JSON and non-JSON:
+  * JSON:
+      - IWCsetVarJSON(ns, name, value)
+        Sets a new attribute with 'name' and 'value' in the defined namespace
+        ('ns').
+      - IWCdelVarJSON(name)
+        Deletes the attribute named 'name' (can only be done for the namespace
+        the widget belongs to).
+
+  * non-JSON:
+      - IWCsetVar(name, data)
+        Sets a new variable 'name' with value 'data'. As here IWC variables do
+        not belong to a namespace any can be set.
+      - IWCdelVar(name)
+        Deletes variable 'name'. As here IWC variables do not belong to a
+        namespace any can be deleted.
+
+
+All fetched IWC variables are locally stored in array 'IWCdata[name]' and can
+be addressed accordingly. Furthermore, with function 'setStatus(status)' (and
+'setStatusFade(status)' respectively) IWC specific status messages are set and
+displayed in the footer of a widget (only if both 'showFooter' in
+/scripts/index.js and 'IWCstatusMessages' in /scripts/config.js are set true).
+If you want to set your own status messages just use these functions (but be
+sure that 'showFooter' in /scripts/index.js is set true, otherwise no footer and
+therefore no status messages will be displayed). For deleting status messages
+call function 'delStatus()'. If the status message should automatically fade
+after a couple of seconds use function 'setStatusFade(status)'.
+
+
+If you have configured your widget as described above, you will receive updates
+on IWC variables you listen to. If by any means you want to retrieve an IWC
+variable which you do not listen to (because you may have disabled the polling
+feature), you can do that as follows:
+  * JSON:
+      - All IWC variables for the namespace a widget belongs to are retrieved
+        automatically (because it is one JSON object) and you can address them
+        using 'IWCdata[name]'. If you disabled polling and want to retrieve all
+        IWC variables for your namespace, call 'IWCgetVarJSON()' (this makes no
+        sense when polling is enabled, because a widget with polling enabled
+        listens on all updates happening in its namespace, therefore stored
+        values in 'IWCdata[name]' should be up-to-date anytime).
+  * non-JSON:
+      - Use 'IWCgetVar(name)' to fetch an IWC variable you do not listen to.
+        Once retrieved the variable is also stored in 'IWCdata[name]'. If you
+        have defined an IWC callback function for the variable it will be
+        invoked, as well.       
+
+
+With IWC you can set shared data and listen to shared data updates. If there is 
+an update for a variable you want to listen to, the corresponding IWC callback
+function is invoked doing something with the newly received data. For the JSON
+method it is enough that you name the callback functions as described above. For
+the non-JSON method you also have to define all IWC variables you want to listen
+to (in /scripts.config.js, as described before). This is just to minimize
+traffic for the non-JSON method because it is useless to receive updates for IWC
+variables with which you do not want to do anything. Every update on an IWC
+variable triggers a new request, therefore it is wise to only fetch the ones
+needed. By using JSON all attributes set in a namespace (e.g. WP6) are retrieved
+and the ones having a callback function are invoked. Network traffic is no
+problem here because a widget listens to only one namespace which is represented
+as once IWC variable consisting of a JSON object.
+
+Using non-JSON, variable names have to be unique. Therefore, I recommend using
+namespaces, e.g. 'WP6::keyword'. All variables in the whole scope of IWC can be
+set, retrieved, and deleted. Therefore, extra caution is advisable.
+
+With JSON, variables belong to a namespace and therefore can be uniquely
+identified. A widget belongs to exactly one namespace and listens on updates
+only on that namespace. This means, shared data can only be retrieved (and
+deleted) for the namespace the widget belongs to. The only exception of
+interfering with another namespace is the setting of shared data. If a widget of
+one namespace wants to communicate with another widget of a second namespace, it
+can set a new IWC variable in the scope of the second namespace. Therefore, the
+widget in the second namespace gets notified. If for example widget 'A::1'
+(i.e., widget '1' in namespace 'A') wants to talk to widget 'B::1', widget
+'A::1' is allowed to set a new variable, e.g. 'B::searchterm'. So, if widget
+'B::1' is listening on updates for this variable it gets notified and can do
+something with the newly received data. This behaviour acts as a data protection
+mechanism that one widget does not interfere with another unless they two have
+negotiated how they want to do it.
+
+
+Last but not least: Do not forget to proxify your AJAX requests by using
+'Widget.proxify(URL);' as to get around browsers' same-origin restrictions.

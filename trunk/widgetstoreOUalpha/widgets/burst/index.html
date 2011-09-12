@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="PRAGMA" content="NO-CACHE" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>BuRST Publications Search
+</title>
+<link rel="stylesheet" href="ltfll-design/style.css" type="text/css" />
+<link rel="stylesheet" href="style/common.css" type="text/css" />
+<link rel="stylesheet" href="style/index.css" type="text/css" />
+<link rel="stylesheet" href="styles.css" type="text/css" />
+<script type="text/javascript" src="/wookie/dwr/util.js"></script>
+<script type="text/javascript" src="/wookie/dwr/engine.js"></script>
+<script type="text/javascript" src="/wookie/dwr/interface/WidgetImpl.js"></script>
+<script type="text/javascript" src="/wookie/shared/js/wookie-wrapper.js"></script>
+<script type="text/javascript" src="/wookie/shared/js/wookie-polling-feature.js"></script>
+<script type="text/javascript" src="strings.js"></script>
+<script type="text/javascript" src="ltfll-design/common.js"></script>
+<script type="text/javascript" src="ltfll-design/style.js"></script>
+<script type="text/javascript" src="lib/iwc.js"></script>
+<script type="text/javascript" src="lib/non-wookie.js"></script>
+<script type="text/javascript" src="lib/status.js"></script>
+<script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="lib/json2-min.js"></script>
+<script type="text/javascript" src="scripts/config.js"></script>
+<script type="text/javascript" src="scripts/iwc-callbacks.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+<script type="text/javascript">
+
+    function ajaxFunction(url) {
+
+      var xmlHttp;
+
+      try {
+
+        // Firefox, Opera 8.0+, Safari
+
+        xmlHttp=new XMLHttpRequest();
+
+      }
+
+      catch (e) {
+
+        // Internet Explorer
+
+        try {
+
+          xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+
+        }
+
+        catch (e) {
+
+          try {
+
+            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+          }
+
+          catch (e) {
+
+            alert("Your browser does not support AJAX!");
+
+            return false;
+
+          }
+
+        }
+
+      }
+
+      xmlHttp.onreadystatechange=function() {
+
+        if (xmlHttp.readyState==4) {
+
+          // this method unreliable with IE
+
+          // var resText=xmlHttp.responseText;
+
+          // document.getElementById('authList').innerHTML=''+resText;
+
+          // document.getElementById('authList').outerHTML=document.getElementById('authList').outerHTML;
+
+          
+
+          // document.getElementById('debug').value=xmlHttp.responseText;
+
+          
+
+          var re = new RegExp('(\<select(.*?)\>)(.*?)(\<\/select\>)', 'i');   
+
+          document.getElementById('authList').innerHTML = xmlHttp.responseText;
+
+          if (document.getElementById('authList').outerHTML) document.getElementById('authList').outerHTML = document.getElementById('authList').outerHTML.replace(re,'$1'+xmlHttp.responseText+'$4');
+
+        }
+
+      }
+
+      xmlHttp.open("GET",url,true);
+
+      xmlHttp.send(null);
+
+    }
+
+    function ajaxFunction2(url) {
+
+      var xmlHttp;
+
+      try {
+
+        // Firefox, Opera 8.0+, Safari
+
+        xmlHttp=new XMLHttpRequest();
+
+      }
+
+      catch (e) {
+
+        // Internet Explorer
+
+        try {
+
+          xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+
+        }
+
+        catch (e) {
+
+          try {
+
+            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+
+          }
+
+          catch (e) {
+
+            alert("Your browser does not support AJAX!");
+
+            return false;
+
+          }
+
+        }
+
+      }
+
+      xmlHttp.onreadystatechange=function() {
+
+        if (xmlHttp.readyState==4) {
+
+          var resText=xmlHttp.responseText;
+
+          document.getElementById('keyList').innerHTML=''+resText;
+
+          document.getElementById('keyList').outerHTML=document.getElementById('keyList').outerHTML;
+
+          // document.getElementById('debug').value=xmlHttp.responseText;
+
+        }
+
+      }
+
+      xmlHttp.open("GET",url,true);
+
+      xmlHttp.send(null);
+
+    }
+
+    function authSearch(form) {
+
+      authName=form.authName.value;
+
+      if (authName!='') {
+
+        var url='http://universe.stellarnet.eu/burst/ajax_author.php?authName=' + authName;
+
+        alert("will now make an Ajax call to\n"+url);
+
+        ajaxFunction(url);
+
+      } else {
+
+        form.authList.options.length=0;
+
+      }
+
+      return false;
+
+    }
+
+    function keySearch(form) {
+
+      keyword=form.keyword.value;
+
+      if (keyword!='') {
+
+        var url='http://universe.stellarnet.eu/burst/ajax_keyword.php?keyword=' + keyword;
+
+        alert("will now make an Ajax call to\n"+url);
+
+        ajaxFunction2(url);
+
+      } else {
+
+        form.keyList.options.length=0;
+
+      }
+
+      return false;
+
+    }
+
+    function checkAll() {
+
+      field=document.getElementsByName('result[]');
+
+      for (i = 0; i < field.length; i++) field[i].checked = true ;
+
+    }
+
+    function uncheckAll() {
+
+      field=document.getElementsByName('result[]');
+
+      for (i = 0; i < field.length; i++) field[i].checked = false ;
+
+    }
+
+    function checkRSS() {
+
+      field=document.getElementsByName('result[]');
+
+      checkedFlag=false;
+
+      for (i = 0; i < field.length; i++) {
+
+        if (field[i].checked==true) checkedFlag=true;
+
+      }
+
+      return false;
+
+    }
+
+    function resetForm() {
+
+      form=document.forms['theForm'];
+
+      form.authList.options.length=0;
+
+      form.keyList.options.length=0;
+
+      form.authName.value='';
+
+      form.searchBool.value='';
+
+      document.getElementById('results').innerHTML='';
+
+      document.getElementById('hits').innerHTML='';
+
+      return false;
+
+    }
+
+    function switchTabs(a) {
+
+      // blur all tabs and make just the actTab one active
+
+      for (i=1; i < 4; i++) {
+
+        document.getElementById('tab'+i).className='blurTab';
+
+        document.getElementById('opt'+i).className='blurBlock';
+
+      }
+
+      document.getElementById('tab'+a).className='activeTab';
+
+      document.getElementById('opt'+a).className='activeBlock';
+
+      document.getElementById('opt').value=a;
+
+      return false;
+
+    }
+
+  </script></head><body onload="init();">
+  
+  <div id="ltfll_header"></div>
+
+<div id="ltfll_content">
+
+<img src="images/burst_logo.gif" width="87" height="87" alt="BuRST logo" border="0" style="float: left; margin: 0 12px 12px 0;" />
+
+<h3>BuRST Search for STELLAR Publications</h3><br clear="left" />
+
+
+
+<div class="tabsRow">
+
+<div id="tab1" class="" title="Click to perform a boolean text search" onclick="return switchTabs(1);">Boolean text</div>
+
+<div id="tab2" class="" title="Click to search on author name" onclick="return switchTabs(2);">Author name</div>
+
+<div id="tab3" class="" title="Click for a plain text search on a key phrase" onclick="return switchTabs(3);">Key phrase</div>
+
+</div><br clear="left" />
+
+<form action="" method="post" name="theForm"><input type="hidden" name="opt" id="opt" value="" />
+
+
+
+<div id="opt1">Boolean text search: <input type="text" name="searchBool" id="keywords" size="50" maxlength="150" value="" /><br />on title, description and keywords, eg: +apple -macintosh, words longer than 3 characters</div>
+
+<div><input type="submit" value="search" /> <input type="reset" value=" reset form " onclick="return resetForm(this.form);" /></div>
+
+
+
+<div id="opt2"><div style="float: left;">Author surname: <input type="text" name="authName" size="24" maxlength="100" value="" onkeyup="return authSearch(this.form);" /><br />Begin typing to see matching author names.</div>
+
+<select multiple="multiple" name="authList[]" id="authList" size="6"><option></option></select></div>
+
+
+
+<div id="opt3"><div style="float: left;">Key phrase search: <input type="text" name="keyword" size="24" maxlength="100" value="" onkeyup="return keySearch(this.form);" /><br />Begin typing to see matching key phrases.</div>
+
+<select multiple="multiple" name="keyList[]" id="keyList" size="6"><option></option></select></div>
+
+</form>
+
+</div>
+
+<div id="ltfll_footer"></div>
+
+<script type="text/javascript">
+
+  // initial tab selection
+
+  switchTabs(1);
+
+</script>
+
+
+
+
+
+</body></html>

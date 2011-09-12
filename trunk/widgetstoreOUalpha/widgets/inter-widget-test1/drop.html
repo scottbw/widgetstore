@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="ajquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="ajquery.xdomainajax.js"></script>
+	<script src="jquery.ba-postmessage.min.js"></script>
+    </head>
+    <body>
+        <h1>testing cros with jQuery</h1>
+        <div id="widget">
+
+            <script type = "text/javascript">
+
+
+		$.receiveMessage(
+			function(e){
+				alert( e.data );
+			},
+			'http://augur.wu.ac.at/conspect_3/widgets/iwc/proxify.html'
+		);
+
+/*
+
+
+                $(document).ready(function(){
+		alert('hello');
+		//$('#container').load('http://www.google.com');
+		
+
+$.ajax({
+    url: 'http://augur.wu.ac.at/conspect_3/widgets/iwc/proxify.html',
+    type: 'GET',
+    success: function(res) {
+        var headline = $(res.responseText).text();
+        alert(headline);
+    }
+});
+
+
+		alert('test2');
+                $('#container').load('http://augur.wu.ac.at/conspect_3/widgets/iwc/proxify.php?data=test');
+
+
+                });
+
+*/
+
+            </script>
+
+        </div>
+
+	<iframe src="http://augur.wu.ac.at/conspect_3/widgets/iwc/proxify.html"/>
+
+        <div id="container" style="border:1px solid black">Div container</div>
+        
+    </body>
+</html>

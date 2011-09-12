@@ -1,0 +1,32 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<widget xmlns="http://www.w3.org/ns/widgets"
+		id="http://www.ltfll-project.org/widgets/tests/inter-widget-test1"
+		version="1.5"
+		width="300" height="300">
+	<name>WP4 Inter-widget Test 1</name>
+	<description>WP4 Inter-widget Test 1</description> 
+	<author>Chris Valentine, Fridolin Wild, Katja Buelow</author>
+	<license>LICENSE USED</license>
+	<content src="index.html"/>
+	<icon src="icon.png"/>
+	<feature name="http://www.getwookie.org/usefeature/polling" required="true"/>
+        <feature name="http://widgets.kmi.open.ac.uk/wookie/dependency" required="true">
+              <param name="widget x" value="isRequired"></param>
+              <param name="widget y" value="requires"></param>
+        </feature>
+</widget>
