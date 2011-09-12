@@ -1,0 +1,45 @@
+<% 
+	//put in hidden fields user metadata
+
+	String userName = (String) session.getAttribute("userName");
+	String hashedUserNameWithSalt = (String) session.getAttribute("hashedUserNameWithSalt");
+	if (userName != null) {
+%>
+<!--  <script>alert("<% out.print(userName);%>");</script>-->
+<span id="userName" style="display: none"><%
+ 	out.print(userName);
+ %></span>
+
+<span id="hashedUNS" style="display: none"><%
+ 	out.print(hashedUserNameWithSalt);
+ %></span>
+<%
+	}
+%>
+
+<div id="header">
+	<div id="loginInfo">
+	<% 
+	if (session.getAttribute("userName")!=null) { 
+	%>
+	Logged in as <a href="profile.jsp?u=<% out.print(session.getAttribute("userName")); %>"><% out.print(session.getAttribute("userName")); %></a>
+	<a href="logout.jsp">logout</a>
+	<% 
+	}else {
+	%>
+	<a href="login.jsp">login</a><a href="registerForm.jsp">register</a>
+	<% 
+	}
+	%>
+	
+	</div>
+    <h1>header</h1>
+    <div id="searchBar">
+
+            <img src="/wookie/shared/images/ou-logo.jpg"/>
+            <input id="widgetSearchInput" name="q" type="text" size="40" />
+            <input type="submit" value="Search for widgets" />
+
+    </div>
+    <div id="sub-header"></div>
+</div>

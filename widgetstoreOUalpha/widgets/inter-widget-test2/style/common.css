@@ -1,0 +1,16 @@
+body
+{
+   font-size:9px;
+   font-family:Verdana,sans-serif;
+}
+
+input.groovybutton
+{
+   font-size:9px;
+   font-weight:bold;
+   color:#fcfcfc;
+   background-color:#000000;
+   border-style:solid;
+   border-color:#cccccc;
+   border-width:1px;
+}

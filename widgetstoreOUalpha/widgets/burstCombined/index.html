@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="PRAGMA" content="NO-CACHE" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>BuRST</title>
+        <link rel="stylesheet" href="style/index.css" type="text/css" />
+        <script type="text/javascript" src="/wookie/dwr/util.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/engine.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/interface/WidgetImpl.js"></script>
+        <script type="text/javascript" src="/wookie/shared/js/wookie-wrapper.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/util.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/engine.js"></script>
+        <script type="text/javascript" src="/wookie/dwr/interface/WidgetImpl.js"></script>
+        <script type="text/javascript" src="/wookie/shared/js/wookie-wrapper.js"></script>
+        <script type="text/javascript" src="lib/jquery-1.4.3.min.js"></script>
+        <script type="text/javascript" src="lib/bsn.AutoSuggest_2.1.3.js"></script>
+        <script type="text/javascript" src="lib/json2-min.js"></script>
+        <script type="text/javascript" src="lib/jquery.scrollTo-min.js"></script>
+        <script type="text/javascript" src="scripts/index.js"></script>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <img src="images/burst_logo.gif" width="87" height="87" alt="BuRST logo" border="0" style="float: right; margin: 0 12px 12px 0;" />
+            <!-- <h3>BuRST Search for STELLAR Publications</h3><br clear="left" /> -->
+            <h3>BuRST Search for STELLAR Publications</h3>
+            <br clear="both" />
+            <div id="hits-container">
+                <ul id="hits-container-panel-list">
+                    <li id="search-results-listitem" class="FPpanel">
+                        <div id="hits">
+
+                        </div>
+                    </li>
+                    <li id="pub-details-listitem" class="FPpanel">
+                        <div id="pubDetails">
+
+                        </div>
+                        <div id="go-back-button">Go back to search results</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tabsRow">
+                <div id="tab1" class="activeTab" title="Click to go back to the featured publication of the day">Featured</div>
+                <div id="tab2" class="blurTab" title="Click to perform a boolean text search">Search</div>
+                <div id="tab3" class="blurTab" title="Click to search on author name">Author</div>
+                <div id="tab4" class="blurTab" title="Click for a plain text search on a key phrase">Key phrase</div>
+            </div>
+            <br clear="left" />
+
+
+
+
+            <div id="opts">
+                <div id="opt1" class="opt activeBlock">
+                    <h3>Publication of the day</h3>
+                    <div id="featuredPublication">
+
+                    </div>
+                    <div id="featureSelectionMenu">
+                        <h4>Most popular publication of </h4>
+                        <ul>
+                            <li><span style="display:none">1</span>last 24 hours</li>
+                            <li><span style="display:none">2</span>last week</li>
+                            <li><span style="display:none">3</span>last month</li>
+                            <li><span style="display:none">4</span>last year</li>
+                            <li><span style="display:none">0</span>all time</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="opt2" class="opt blurBlock">Boolean text search:
+                    <input type="text" name="searchBool" id="keywords" size="50" maxlength="150" value="" />
+                    <br />on title, description and keywords, eg: +apple -macintosh, words longer than 3 characters
+                    <input id="booleanSearchSumitBtn" type="submit" value="search" />
+                </div>
+
+                <div id="opt3" class="opt blurBlock">
+                    <div style="float: left;">Author surname:
+                        <input id="authorAjaxSearchInput" type="text" name="authName" size="36" maxlength="100" value="" /><br />
+
+                        <div id="selectedAuthors">
+                            <ul>
+
+                            </ul>
+                            <input type="radio" name="a_mode" value="AND" checked="true" />AND
+                            <input type="radio" name="a_mode" value="OR" />OR
+                        </div>
+                        <input type="submit" id="searchSelectedAuthorsInput" size="10" value="search" />
+                    </div>
+                </div>
+
+
+                <div id="opt4" class="opt blurBlock">
+                    <div style="float: left;">
+                        Key phrase search:
+                        <input id="keywordAjaxSearchInput" type="text" name="keyword" size="24" maxlength="100" value="" /><br />
+                        Begin typing to see matching key phrases.
+                    </div>
+                    <br clear="left" />
+                    <div id="selectedKeywords">
+                        <ul>
+
+                        </ul>
+                        <input type="radio" name="k_mode" value="AND" checked="true" />AND
+                        <input type="radio" name="k_mode" value="OR" />OR
+                    </div>
+                    <div>
+                        <input id="searchSelectedKeywordsInput" type="submit" value="search" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </body></html>
