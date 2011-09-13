@@ -1,0 +1,5 @@
+#summary One-Source code for Solr registry for widgets developed for ITEC
+
+SVN:
+
+http://iecbolton.jira.com/svn/ITEC/widget_discovery_service/trunk/
