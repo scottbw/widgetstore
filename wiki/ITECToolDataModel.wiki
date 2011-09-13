@@ -1,0 +1,27 @@
+#summary The data model developed for ITEC for "tools" including Widgets
+
+
+This is a summary of the part of the ITEC registry data model concerned with tools
+
+|| Name || Description ||
+|| name  || name of this tool ||
+|| version || the version number of this tool ||
+|| description || the description of this tool ||
+|| type || a term indicating the type of tool (device, shell, application) ||
+|| tag || a descriptive phrase for this tool ||
+|| affordance || what one can do with this tool ||
+|| functionality || utility/function offered to a user ||
+|| image || a URI pointing to an image ||
+|| license || the license under which the tool is available ||
+|| worksWith || Other tools with which this tool works ||
+
+Affordance 
+
+|| name || the name of the affordance ||
+|| weight || a number indicating the level of support this tool is giving to this affordance ||
+
+Works With
+
+|| tool || a relation indicating the related tool interoperating with this tool ||
+|| interoperability || description of how to let it interoperate ||
+|| required || indicates whether the related tool is required to run the tool  ||
