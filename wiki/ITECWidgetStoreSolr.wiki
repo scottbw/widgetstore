@@ -3,3 +3,9 @@
 SVN:
 
 http://iecbolton.jira.com/svn/ITEC/widget_discovery_service/trunk/
+
+Read the README for instructions on how to run it and play with it. 
+
+The registry gets data out of Wookie and indexes into EN and FR search cores, and then exposes a REST API for searching and browsing.
+
+(This is only a proof-of-concept)
