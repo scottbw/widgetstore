@@ -1,4 +1,4 @@
-#Instructions on how to access the ROLE ontology
+# Instructions on how to access the ROLE ontology
 
 = ROLE Ontology =
 
