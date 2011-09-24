@@ -8,4 +8,5 @@ The current version of the ROLE ontology consists of 2 files:
 
 A convenient way to browse the ontology:
 http://pellet.owldl.com/owlsight/
+
 Go to "File" - "Load ontology" and copy/paste the ontology URL.
