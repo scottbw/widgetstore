@@ -3,8 +3,8 @@
 = ROLE Ontology =
 
 The current version of the ROLE ontology consists of 2 files:
-  * tool-ontology.rdfs  https://role-project.svn.sourceforge.net/svnroot/role-project/trunk/model/tool-ontology.rdfs
-  * learning-ontology.rdfs  https://role-project.svn.sourceforge.net/svnroot/role-project/trunk/model/learning-ontology.rdfs
+  * https://role-project.svn.sourceforge.net/svnroot/role-project/trunk/model/tool-ontology.rdfs
+  * https://role-project.svn.sourceforge.net/svnroot/role-project/trunk/model/learning-ontology.rdfs
 
 To browse the ontology, you can use this online OWL tool:
 http://pellet.owldl.com/owlsight/
